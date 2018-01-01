@@ -255,9 +255,4 @@ public class VoteSystemContoller {
     	return codeMap.toString();
     }
     
-    @RequestMapping(value = "/fontpage", method = RequestMethod.GET)
-    public ModelAndView fontpage() throws Exception{
-    	
-    	return new ModelAndView("fontpage");
-    }
 }

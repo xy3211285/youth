@@ -1,0 +1,273 @@
+@charset "utf-8";
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+ul,ol,li{
+	list-style: none;
+}
+img{
+	border: none;
+}
+a{
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+	outline: none;
+}
+body{
+	font:12px "微软雅黑";
+	color: #333;
+	position:relative;
+	min-width: 1200px;
+	background:#ffffff;
+}
+body,html{
+	height :100%;
+	width:100%;	
+}
+h1,h2,h3,h4,h5{
+	margin: 0;
+}
+
+input[type=text],input[type=button]{
+	outline: none;
+}
+
+input:-ms-input-placeholder{
+    color: #bbb;opacity:1;
+}
+
+input::-webkit-input-placeholder{
+    color: #bbb;opacity:1;
+}
+
+input:-webkit-autofill {  
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;  
+}  
+
+.animationTopSlideIn {
+	-webkit-animation: showTopSlideIn .2s ease-in-out;
+	-moz-animation: showTopSlideIn .2s ease-in-out;
+	-ms-animation: showTopSlideIn .2s ease-in-out;
+	-o-animation: showTopSlideIn .2s ease-in-out;
+	animation: showTopSlideIn .2s ease-in-out
+}
+
+@-webkit-keyframes showTopSlideIn {
+	0% {
+		opacity: 0;
+		transform: scale(.7)
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1)
+	}
+}
+
+@-moz-keyframes showTopSlideIn {
+	0% {
+		opacity: 0;
+		transform: scale(.7)
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1)
+	}
+}
+
+@-ms-keyframes showTopSlideIn {
+	0% {
+		opacity: 0;
+		transform: scale(.7)
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1)
+	}
+}
+
+@-o-keyframes showTopSlideIn {
+	0% {
+		opacity: 0;
+		transform: scale(.7)
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1)
+	}
+}
+
+@keyframes showTopSlideIn {
+	0% {
+		opacity: 0;
+		transform: scale(.7)
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1)
+	}
+}
+.showModal{
+	height: 500px;
+	width: 580px;
+	/*background: rgba(90,195,132,1);*/
+	z-index:2;
+	display: block;
+	margin: 100px auto;
+}
+.showModal>div{
+	display: block;
+	position: absolute;
+	background: #fff;
+	height: 500px;
+	width: 580px;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	border: 1px solid #788da3;
+}
+.showModal>div h3{
+	height: 70px;
+	color: #fff;
+	background: #788da3;
+	font-size: 26px;
+	text-align: center;
+	line-height: 70px;
+	font-weight: normal;
+}
+.showModal>div h3 a{
+	float: right;
+	height: 28px;
+	width: 28px;
+	background: url(../img/closeIco.png)no-repeat center;
+	margin: 20px 18px 0 0;
+}
+.showModal>div.login h3{
+	text-align: left;
+	padding-left: 50px;
+}
+.showModal>div form{
+	padding: 33px 0 0 50px;
+}
+.showModal>div form>div{
+	height: 60px;
+	width: 480px;
+	border: 1px solid #ddd;
+	margin-bottom: 20px;
+}
+.showModal>div form>div label{
+	float: left;
+	height: 60px;
+	width: 42px;
+	background: url(../img/passWordIco.png)no-repeat right center;
+}
+.showModal>div form>div input{
+	float: left;
+	width: 436px;
+	height: 100%;
+	border: none;
+	outline: none;
+	padding-left: 20px;
+	font-size: 24px;
+}
+.showModal>div form>div:first-of-type label{
+	background: url(../img/phoneIco.png)no-repeat right center;
+}
+.showModal>div form>div:last-of-type input[type=text]{
+	width: 299px;
+}
+.showModal>div form>div:last-of-type input[type=button]{
+	width: 179px;
+	background: #c8c8c8;
+	color: #fff;
+	padding-left: 0;
+/*		background: #e66666;*/
+}
+.showModal>div form>input{
+	display: block;
+	height: 60px;
+	width: 480px;
+	color: #fff;
+	font-size: 24px;
+	border: none;
+	background: #e66666;
+}
+.showModal>div.searchCriteria{
+	width:720px;
+	height:500px; 
+	border-radius: 30px ; 
+	padding-top: 40px;
+}
+.showModal>div.searchCriteria >div{
+	margin-bottom: 10px;
+}
+.showModal>div.searchCriteria >div label{
+	float: left;
+	font-size: 20px;
+	width: 142px;
+	padding: 6px 0 0 36px;
+}
+.showModal>div.searchCriteria >div div{
+	float: left;
+	width: 540px;
+}
+.showModal>div.searchCriteria >div div a{
+	float: left;
+	width:120px;
+	height:40px; 
+	background:#E9E9E9;
+	border-radius: 6px ;
+	font-size: 20px;
+	text-align: center;
+	line-height: 40px;
+	margin: 0 20px 20px 0;
+}
+.showModal>div.searchCriteria >div div a.active{
+	background:#F77B54;
+	color: #fff;
+}
+.showModal>div.searchCriteria >div div a:nth-child(4n){
+	margin-right: 0;	
+}
+.showModal>div.searchCriteria >input[type=button]{
+	float: left;
+	width:230px;
+	height:60px; 
+	background:#4DA325;
+	border-radius: 10px ;
+	color: #fff;
+	font-size: 24px; 
+	border: none;
+	margin:20px 0 0 0;
+	cursor: pointer;
+}
+.showModal>div.searchCriteria >input[type=button]:first-of-type{
+	background: #c8c8c8;
+	margin: 20px 100px 0 80px;
+}
+.showModal>div.QR_Code{
+	width:450px;
+	height:450px; 
+	border-radius: 30px ; 
+	display: none;
+}
+.showModal>div.QR_Code img{
+	display: block;
+	margin: 89px auto 30px;
+}
+.showModal>div.QR_Code p{
+	font-size: 24px;
+	color: #666;
+	text-align: center;
+}
+.showModal>div.QR_Code>a{
+	float: right;
+	height: 28px;
+	width: 28px;
+	margin: 22px 30px 0 0;
+	background: url(../img/closeIco.png)no-repeat center;
+}

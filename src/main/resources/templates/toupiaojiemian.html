@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>投票界面</title>
+	</head>
+	<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.details>h4{
+			margin: 20px 0;
+			width: 72px;
+			border-bottom: 5px solid #e66666;
+		}
+		.details>div{
+			padding: 20px;
+			background: #677684;
+			color: #fff;
+			width: 100%;
+			border-radius: 10px;
+		}
+		.details{
+			width: 80%;
+			margin: 0 auto
+		}
+		.tables{
+			width: 80%;
+			margin: 0 auto;
+		}
+		.tab1{
+			width: 100%;
+			padding: 20px;
+		}
+		.tab1>table{
+			margin-top:0;
+			width: 100%;
+			text-align: center;
+			border: 1px solid #ccc;
+		}
+		.tab1>table th{
+			height:50px;
+		}
+		.tab1>table td{
+			height: 30px;
+		}
+		.tab1>table td,.tab1>table th{
+			border: 1px solid #ccc;
+		}
+		.description{
+			color: red;
+			width: 80%;
+			margin: 0 auto;
+			height: 40px;
+			line-height: 60px;
+		}
+		.title{
+			color: #000;
+			width: 80%;
+			font-weight: bold;
+			margin: 0 auto;
+			height: 40px;
+			line-height: 60px;
+		}
+	</style>
+	<body>
+		<div class="details">
+			<h4>评价内容</h4>
+			<div>（一）严格依法行政方面。是否认真贯彻落实中央，省委省政府和市委市政府重大决策部署；是否按照法定职责和简政放权要求
+			切实履行职责；是否存在法外设权，利用职权吃拿卡要、与民争利、侵害市场主体和人民群众利益等问题；是否落实深化行政执
+			法体制改革要求，严格规范公正文明执法，纠正、查处执法不公不严问题。<br />
+			（二）服务改善民生方面。是否坚持贯彻勤政为民，创新管理，优化服务，提高行政效能；是否坚持问题导向，针对群众反映强
+			烈的土地征收、救灾救济、低保医保、住房保障资金管理使用等方面损害群众利益的问题开展专项整治，制订切实可行的办法加
+			以解决。<br />
+			（三）转变工作作风方面。是否严格执行中央八项规定，省委六条意见和武汉市十一条禁令精神，加强部门作风建设，是否采取
+			得力措施，纠正和查处发生在群众身边的乱收费、乱摊派、乱罚款等问题；是否认真纠正工作敷衍应付、执行不力、不敢担当等
+			“为官不为”问题；是否解决对基层和群众生冷硬推、工作效率低下等庸懒散问题。<br />
+			（四）落实主体责任方面。领导班子和领导干部是否履行“一岗双责”；领导班子成员是否自觉遵守《廉政准则》，发挥表率作用；
+			是否重点整治本系统党员干部在执法、监管、公共服务中违规收费和收受红包、购物卡等突出问题；是否严肃查处本系统“小官巨
+			腐”等基层腐败问题；是否围绕容易滋生腐败的重点领域和关键环节，建立健全权力运行监督制约机制；是否建立健全具有部门特
+			色的政风行风建设责任考核体系并有效措施。<br />
+			（五）收集和解决问题方面。是否畅通群众利益诉求渠道；是否及时解答群众政策咨询，认真解决群众举报投诉；公开承诺事项是
+			否兑现到位；是否切实解决本部门存在的突出问题，问题整改效果是否让服务对象、社会各界满意等；是否健全完善履职尽责的长
+			效机制。<br /></div>
+			<h4>评议说明</h4>
+			<div>对以下部门和单位的评议共分满意、基本满意、不满意、不了解四个选项。请您根据平时掌握和了解的情况，针对上述评议内容，
+			对参评部门和单位作出公正的综合评价，在相应选项栏打“√”。</div>
+		</div>
+		<div class="description">
+			以下45个部门，必须全部完成评议;28单位共297个站所，从中任选20个及以上完成评议即可
+		</div>
+		<div class="title">
+			部门及单位45个
+		</div>
+		<div class="tables">
+			<div class="tab1">
+				<table cellspacing="0" cellpadding="">
+						<tr>
+							<th>序号</th>
+							<th>部门和单位名称</th>
+							<th>满意</th>
+							<th>基本满意</th>
+							<th>不满意</th>
+							<th>不了解</th>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+						</tr>
+					</table>
+			</div>
+			
+		</div>
+		<div class="title">
+			基层站所297个
+		</div>
+		<div class="tables">
+			<div class="tab1">
+				<table cellspacing="0" cellpadding="">
+						<tr>
+							<th>序号</th>
+							<th>基层站所</th>
+							<th>满意</th>
+							<th>基本满意</th>
+							<th>不满意</th>
+							<th>不了解</th>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+						</tr>
+					</table>
+			</div>
+		</div>
+	</body>
+</html>
