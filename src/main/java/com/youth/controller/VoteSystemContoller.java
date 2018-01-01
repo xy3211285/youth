@@ -50,7 +50,7 @@ public class VoteSystemContoller {
     	String username = request.getParameter("username");
     	String pw = request.getParameter("password");
     	String phone = request.getParameter("phone");
-    	if (StringUtils.isEmpty(username) || StringUtils.isEmpty(pw) || StringUtils.isEmpty(phone)){
+    	if (StringUtils.isEmpty(pw) || StringUtils.isEmpty(phone)){
     		obj.put("status", -3);
     		obj.put("msg", "请检查登录信息是否为空");
     		return obj;
@@ -100,9 +100,6 @@ public class VoteSystemContoller {
     	String pw = request.getParameter("password");
     	String phone = request.getParameter("phone");
     	
-    	if (StringUtils.isEmpty(username)){
-    		return "用户名为空";
-    	}
     	if (StringUtils.isEmpty(pw)){
     		return "密码为空";
     	}
