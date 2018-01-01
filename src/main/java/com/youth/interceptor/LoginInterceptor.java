@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        if (!StringUtils.equals(request.getServletPath(), "/home")) {
-            response.sendRedirect("/home");
-        }
+//        if (!StringUtils.equals(request.getServletPath(), "/home")) {
+//            response.sendRedirect("/home");
+//        }
         return true;
     }
 
