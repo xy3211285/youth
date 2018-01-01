@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.youth.bean.BasicDepartment;
 import com.youth.bean.Departments;
@@ -243,7 +242,8 @@ public class VoteSystemContoller {
      */
     @RequestMapping(value = "/getValidateCode", method = RequestMethod.GET)
     @ResponseBody
-    public String getValidateCode(@RequestParam("phone")String phone) throws Exception{
+    public JSONObject getValidateCode(@RequestParam("phone")String phone) throws Exception{
+    	JSONObject obj = new JSONObject();
     	String apiUrl = "http://v.juhe.cn/sms/send";
     	String mobile = phone;
     	String code = RandomCode.getValidateCode();
@@ -251,8 +251,9 @@ public class VoteSystemContoller {
     	String apiKey = "b5655a21da422ef1158632f47ced359a";
     	String tplid = "25465";
     	Map<String, Object> codeMap = JuheSmsAPI.sendSms(apiUrl, mobile, text,apiKey ,tplid);
-    	codeMap.put("validateCode", code);
-    	return codeMap.toString();
+    	obj.put("result", codeMap);
+    	obj.put("validateCode", code);
+    	return obj;
     }
     
 }
