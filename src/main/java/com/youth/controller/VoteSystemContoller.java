@@ -170,7 +170,7 @@ public class VoteSystemContoller {
 
     
     /**
-     * 获取基层单位的页面的部门信息，如果已经投票则展示当前用户的投票信息
+     * 保存当前用户的部门投票信息
      * @author Administrator
      * @throws JSONException
      */
@@ -193,7 +193,7 @@ public class VoteSystemContoller {
     }
     
     /**
-     * 获取基层单位的页面的部门信息，如果已经投票则展示当前用户的投票信息
+     * 保存当前用户的基本单位投票信息至少20个
      * @author Administrator
      * @throws JSONException
      */
@@ -214,7 +214,7 @@ public class VoteSystemContoller {
     }
     
     /**
-     * 获取基层单位的页面的部门信息，如果已经投票则展示当前用户的投票信息
+     * 查看投票统计结果
      * @author Administrator
      * @throws JSONException
      */
@@ -251,7 +251,7 @@ public class VoteSystemContoller {
     	String apiKey = "b5655a21da422ef1158632f47ced359a";
     	String tplid = "25465";
     	Map<String, Object> codeMap = JuheSmsAPI.sendSms(apiUrl, mobile, text,apiKey ,tplid);
-    	
+    	codeMap.put("validateCode", code);
     	return codeMap.toString();
     }
     
