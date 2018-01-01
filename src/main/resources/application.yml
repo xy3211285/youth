@@ -1,6 +1,7 @@
+
 server:
   port: 8080
-
+  context-path: /
 spring:
   datasource:
       name: test
@@ -29,6 +30,8 @@ spring:
       mode: HTML5
       encoding: UTF-8
       content-type: text/html
+  application:
+    name: vote
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.youth.dao
