@@ -42,7 +42,7 @@ public class VoteSystemContoller {
      * @return
      * @throws JSONException 
      */
-    @RequestMapping(value = "/login", method = RequestMethod.GET,produces="application/json;charset=UTF-8")
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     @ResponseBody
     public JSONObject login(HttpServletRequest request) throws JSONException {
     	JSONObject obj = new JSONObject();
@@ -69,9 +69,9 @@ public class VoteSystemContoller {
     		return obj;
     	}else{
     		
-    		if (!u.getUsername().equals(username) || !u.getPassword().equals(pw)){
+    		if (!u.getPassword().equals(pw)){
     			obj.put("status", -1);
-    			obj.put("msg", "账号或者密码有误，请重新输入");
+    			obj.put("msg", "密码有误，请重新输入");
     			return obj;
     		}
     		if (!u.getPhone().equals(phone)){
@@ -91,20 +91,24 @@ public class VoteSystemContoller {
      * @param request
      * @return
      */
-    @RequestMapping(value = "/register", method = RequestMethod.GET,produces="application/text;charset=UTF-8")
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
     @ResponseBody
-    public String register(HttpServletRequest request) {
-    	
+    public JSONObject register(HttpServletRequest request) {
+    	JSONObject obj = new JSONObject();
     	UserInfo user = new UserInfo();
     	String username = request.getParameter("username");
     	String pw = request.getParameter("password");
     	String phone = request.getParameter("phone");
     	
     	if (StringUtils.isEmpty(pw)){
-    		return "密码为空";
+    		obj.put("code", -1);
+    		obj.put("msg", "密码为空");
+    		return obj;
     	}
     	if (StringUtils.isEmpty(phone)){
-    		return "手机号码为空";
+    		obj.put("code", -2);
+    		obj.put("msg", "手机号码为空");
+    		return obj;
     	}
     	String id = GernatedId.getIdStr();
     	user.setId(id);
@@ -114,13 +118,19 @@ public class VoteSystemContoller {
     	user.setRemark(null);
     	UserInfo u = voteSystemService.getUserInfoByPhone(user);
     	if (u != null){
-    		return "注册失败，当前的手机号码已经被注册";
+    		obj.put("code", -3);
+    		obj.put("msg", "注册失败，当前的手机号码已经被注册");
+    		return obj;
     	}
     	int sta = voteSystemService.saveRegisterInfo(user);
     	if (sta > 0){
-    		return "注册成功";
+    		obj.put("code", 1);
+    		obj.put("msg", "注册成功");
+    		return obj;
     	}else{
-    		return "注册失败";
+    		obj.put("code", -4);
+    		obj.put("msg", "注册失败");
+    		return obj;
     	}
         
     }
@@ -225,6 +235,7 @@ public class VoteSystemContoller {
     		type = "basic_department";
     	}
     	List<VoteResult> voteResult = voteSystemService.getStaticsResult(type);
+    	
     	JSONObject obj = new JSONObject();
     	obj.put("data", voteResult);
     	return obj;

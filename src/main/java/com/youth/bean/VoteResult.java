@@ -15,7 +15,7 @@ public class VoteResult {
 	
 	private String unsatisfly;//不满意
 	
-	private String unknow;//不了解
+	private String tickets;//票数
 	
 	private String rank;//排名
 
@@ -59,12 +59,12 @@ public class VoteResult {
 		this.unsatisfly = unsatisfly;
 	}
 
-	public String getUnknow() {
-		return unknow;
+	public String getTickets() {
+		return tickets;
 	}
 
-	public void setUnknow(String unknow) {
-		this.unknow = unknow;
+	public void setTickets(String tickets) {
+		this.tickets = tickets;
 	}
 
 	public String getRank() {

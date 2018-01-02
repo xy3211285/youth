@@ -1,221 +1,402 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>登录页面</title>
-    <link href="/css/login.css" type="text/css" rel="stylesheet"/>
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/login.js"></script>
-    <style type="text/css">
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        ul, ol, li {
-            list-style: none;
-        }
-
-        img {
-            border: none;
-        }
-
-        a {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-            outline: none;
-        }
-
-        body {
-            font: 12px "微软雅黑";
-            color: #333;
-            background: url(/img/01.jpg);
-            background-size: cover;
-            overflow: hidden;
-        }
-
-        body, html {
-            height: 100%;
-            width: 100%;
-        }
-
-        h1, h2, h3, h4, h5 {
-            margin: 0;
-        }
-
-        input[type=text], input[type=button] {
-            outline: none;
-        }
-
-        input:-ms-input-placeholder {
-            color: #bbb;
-            opacity: 1;
-        }
-
-        input::-webkit-input-placeholder {
-            color: #bbb;
-            opacity: 1;
-        }
-
-        input:-webkit-autofill {
-            -webkit-box-shadow: 0 0 0px 1000px white inset !important;
-        }
-
-        .space {
-            height: 50px;
-        }
-
-        #box {
-            background: #fff;
-            width: 432px;
-            height: 490px;
-            margin-left: 50%;
-            border: 1px solid #788da3;
-            border-radius: 15px;
-            overflow: hidden;
-            box-sizing: border-box;
-        }
-
-        #login-register {
-            width: 100%;
-            height: 410px;
-            overflow: hidden;
-        }
-
-        #login {
-            overflow: hidden;
-            width: 100%;
-            height: 410px;
-        }
-
-        #register {
-            overflow: hidden;
-            width: 100%;
-            height: 410px;
-        }
-
-        #register-login h4 {
-            width: 100%;
-            height: 70px;
-            background: #788da3;
-            font-size: 26px;
-            text-align: center;
-            line-height: 70px;
-            font-weight: normal;
-            overflow: hidden;
-        }
-
-        #register-login h4 a {
-            color: #fff;
-            display: inline-block;
-            width: 49%;
-        }
-
-        form > div {
-            width: 80%;
-            height: 40px;
-            margin: 30px auto;
-            display: block;
-        }
-
-        form input {
-            box-sizing: border-box;
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            border: 1px solid #ccc;
-            text-indent: 10px;
-            outline: none;
-        }
-
-        form .check {
-            width: 30%;
-            height: 40px;
-            float: left;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
-
-        form .checkNumber {
-            width: 69%;
-            float: left;
-            height: 40px;
-        }
-
-        .login-register {
-            width: 100%;
-            height: 40px;
-            background: #e66666;
-            border: 1px solid #e66666;
-        }
-
-        .login-register a {
-            width: 100%;
-            height: 40px;
-            line-height: 40px;
-            display: block;
-            color: #fff;
-            outline: none;
-        }
-    </style>
-</head>
-<body>
-<div class="space">
-
-</div>
-<div id="box">
-    <div id="register-login">
-        <h4>
-            <a href="#login">登录</a>
-            <a href="#register">注册</a>
-        </h4>
-    </div>
-    <div id="login-register">
-        <div id="login">
-            <form>
-                <div>
-                    <label></label>
-                    <input type="tel" placeholder="手机号"/>
-                </div>
-                <div>
-                    <label></label>
-                    <input type="password" placeholder="密码（6-16位字母、数字和符号）"/>
-                </div>
-                <div>
-                    <input type="text" placeholder="验证码" class="checkNumber"/>
-                    <div class="check">1567</div>
-                </div>
-                <div>
-                    <button class="login-register"><a href="index.html">登录</a></button>
-                </div>
-            </form>
-        </div>
-        <div id="register">
-            <form action="" method="post">
-                <div>
-                    <label></label>
-                    <input type="tel" placeholder="手机号"/>
-                </div>
-                <div>
-                    <label></label>
-                    <input type="password" placeholder="密码（6-16位字母、数字和符号）"/>
-                </div>
-                <div>
-                    <label></label>
-                    <input type="password" placeholder="确认密码"/>
-                </div>
-                <div>
-                    <input type="text" placeholder="验证码" class="checkNumber"/>
-                    <input type="button" value="获取验证码" class="check"/>
-                </div>
-                <div>
-                    <button class="login-register"><a href="index.html">注册</a></button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-</body>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>登录页面</title>
+		<link href="https://cdn.bootcss.com/layer/3.1.0/theme/default/layer.css" rel="stylesheet"/>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding:0;
+			}
+			ul,ol,li{
+				list-style: none;
+			}
+			img{
+				border: none;
+			}
+			a{
+				color: #000;
+				text-decoration: none;
+				cursor: pointer;
+				outline: none;
+			}
+			body{
+				font:12px "微软雅黑";
+				color: #333;
+				background:url(img/01.jpg);
+				background-size: cover;
+				overflow: hidden;
+			}
+			body,html{
+				height:100%;
+				width:100%;	
+			}
+			h1,h2,h3,h4,h5{
+				margin: 0;
+			}
+			
+			input[type=text],input[type=button]{
+				outline: none;
+			}
+			input:-ms-input-placeholder{
+			    color: #bbb;opacity:1;
+			}
+			
+			input::-webkit-input-placeholder{
+			    color: #bbb;opacity:1;
+			}
+			input:-webkit-autofill {  
+			    -webkit-box-shadow: 0 0 0px 1000px white inset !important;  
+			}
+			.space{
+				height: 50px;
+			}
+			#box{
+				background: #fff;
+				width: 432px;
+				height: 490px;
+				margin-left:50%;
+				border: 1px solid #788da3;
+				border-radius:15px;
+				overflow: hidden;
+				box-sizing: border-box;
+			}
+			#login-register{
+				width:100%;
+				height:410px;
+				overflow: hidden;
+			}
+			#login{
+				overflow: hidden;
+				width:100%;
+				height:410px;			
+			}
+			#register{
+				overflow: hidden;
+				width:100%;
+				height:410px;
+			}
+			#register-login h4{
+				width:100%;
+				height: 70px;
+				background: #788da3;
+				font-size: 26px;
+				text-align: center;
+				line-height: 70px;
+				font-weight: normal;
+				overflow: hidden;
+			}
+			#register-login h4 a{
+				color: #fff;
+				display: inline-block;
+				width: 49%;			
+			}
+			form>div{
+				width:80%;
+				height: 40px;
+				margin: 30px auto;
+				display: block;
+			}
+			form input{
+				box-sizing: border-box;
+				width:100%;
+				height: 100%;
+				padding:0;
+				border: 1px solid #ccc;
+				text-indent: 10px;
+				outline: none;
+			}
+			form .check{
+				width:30%;
+				height: 40px;
+				float: left;
+				border: 1px solid #ccc;
+				box-sizing: border-box;
+			}
+			form .checkNumber{
+				width:69%;
+				float: left;
+				height: 40px;
+			}
+			.login-register{
+				width:100%;
+				height: 40px;
+				background:#e66666;
+				border: 1px solid #e66666;
+				color: #fff;
+			}
+			.login-register a{
+				width: 100%;
+				height:40px;
+				line-height: 40px;
+				display: block;
+				color: #fff;
+				outline: none;
+			}
+		</style>
+		<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+		<script type="text/javascript" src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+	</head>
+	<body>
+		<div class="space">
+			
+		</div>
+		<div id="box">
+			<div id="register-login">
+			<h4>
+				<a href="#login">登录</a>			
+				<a href="#register">注册</a>	
+			</h4>
+		</div>
+		<div id="login-register">
+			<div id="login">
+		<form onsubmit="return false">
+			<div>
+				<label></label>
+				<input id="loginMobile" type="tel" placeholder="手机号"/>
+			</div>
+			<div>
+				<label></label>
+				<input id="loginPwd" type="password" placeholder="密码（6-16位字母、数字和符号）"/>
+				<span id="errorphone2" style="color:red;font:10px;"></span>
+			</div>
+			<!--<div>
+				<input type="text" placeholder="验证码" class="checkNumber"/>
+				<div class="check">1567</div>
+			</div>-->
+			<div>
+				<button id="loginBtn" class="login-register">登录</button>
+			</div>
+		</form>
+		</div>
+			<div id="register">
+			<form onsubmit="return false">
+			<div>
+				<label></label>
+				<input id="mobile" type="tel" placeholder="手机号"/><span id="errorphone" style="color:red;font:10px;"></span>
+			</div>
+			<div>
+				<label></label>
+				<input id="setPwd" type="password" placeholder="密码（6-16位字母、数字和符号）"/><span id="errorpwd1" style="color:red;font:10px;"></span>
+			</div>
+			<div>
+				<label></label>
+				<input id="pwd" type="password" placeholder="确认密码"/><span id="errorpwd2" style="color:red;font:10px;"></span>
+			</div>
+			<div>
+				<input id="code" type="text" placeholder="验证码" class="checkNumber"/>
+				<input id="VerificationCode" type="button" value="获取验证码" class="check"/><span id="errorcode" style="color:red;font:10px;"></span>
+			</div>
+			<div>
+				<button id="registerBtn" class="login-register">注册</button>
+			</div>
+			</form>
+		</div>
+		</div>		
+		</div>
+		<script>
+			window.msg = function(tip){layer.msg(tip||"操作成功！", {time: 2000, icon:1});}
+		    //window.alert = function(tip){layer.msg(tip||'操作失败！', {time: 2000, icon:5});}
+		    var userId = "";
+			$(function(){
+				$('#mobile').blur(function() {	
+					 var mobile = $('#mobile').val();
+					 if(!(/^1[3|4|5|7|8][0-9]{9}$/.test(mobile))){  
+					       $('#mobile').parent().css("border","1px solid red");
+					       $("#errorphone").text("请输入正确的手机号码");			       
+					    } else{
+					    	$('#mobile').parent().css("border","1px solid #ddd");
+					    	$("#errorphone").text("");
+						}
+				 });
+				 
+				 $('#setPwd').blur(function() {
+					//密码验证6-16	
+					 var reg = /(?!^[0-9]+$)(?!^[A-z]+$)(?!^[^A-z0-9]+$)^.{6,16}$/;
+					 if(!reg.test($(this).val())){ 
+					       $(this).parent().css("border","1px solid red");
+					       $("#errorpwd1").text("密码包含字母和数字,至少6位")
+					     
+					    }else {
+					    	 $(this).parent().css("border","1px solid #ddd");
+					    	 $("#errorpwd1").text("")
+						}
+				 });
+				 
+				 //密码一致验证
+				 $('#pwd').blur(function() {
+				 if($(this).val()!=$('#setPwd').val()||$(this).val()==''){
+				       $(this).parent().css("border","1px solid red");
+				        $("#errorpwd2").text("您两次输入密码不一致！"); 
+				    }else {
+				    	 $(this).parent().css("border","1px solid #ddd");
+				    	 $("#errorpwd2").text("");
+					    }
+				 });
+				 //注册获取验证码
+				    $('#VerificationCode').click(function() {
+						//手机号验证
+						var mobile = $('#mobile').val();
+						 if(!(/^1[3|4|5|7|8][0-9]{9}$/.test(mobile))){ 
+						       $("#errorphone").text("请输入正确的手机号码"); 
+						       $('#mobile').focus(); 
+						       $('#mobile').parent().css("border","1px solid red");
+						       return false; 
+						    } else{
+						    	$('#mobile').parent().css("border","1px solid #ddd");
+						    	$("#errorphone").text("");	
+						    }
+						var param = {"phone":mobile};
+						  	getRegisterCode($(this),param);
+						  
+					});
+					
+					  //注册
+					  $('#registerBtn').click(function() {
+					  	register();			  
+					  });
+					  //注册通过接口获取验证码
+					  	var phoneMsgCode="";
+						function getRegisterCode(o,param){
+							$.ajax({
+								url:"/vote/getValidateCode",
+								type:"GET",
+								async:true,
+								data:param,
+								//data:JSON.stringify(param),
+								dataType:"json",
+								success:function(data){
+									console.log(data);
+									if(data.result.code==200){
+										phoneMsgCode=data.validateCode;
+										//到计时
+										time(o);	
+									}else{
+										alert(data.result.msg);
+									}    					    				    				
+								},
+								error:function(data){
+									console.error(JSON.stringify(data));
+								}
+								
+							});
+						};
+						//倒计时
+						function time(o){
+							var second = 60;
+							o.val("重新发送(" + second + ")");
+							o.attr("disabled","disabled");
+							var timer = null;
+							timer = setInterval(function(){
+								second -= 1;
+								if(second >0 ){
+									o.val("重新发送(" + second + ")");
+								}else{
+									clearInterval(timer);
+									o.val("获取验证码");
+									o.attr("disabled",false);
+								}
+							},1000);
+						}
+						//验证通过注册
+						function register(){
+							var code = $('#code').val();
+							var setPwd = $('#setPwd').val();
+							var pwd =  $('#pwd').val();
+							var mobile = $("#mobile").val();
+							if(mobile){
+								if(!(/^1[3|4|5|7|8][0-9]{9}$/.test(mobile))){  
+								       $('#mobile').parent().css("border","1px solid red");
+								       $("#errorphone").text("请输入正确的手机号码");
+								       return false;
+								    } else{
+								    	$('#mobile').parent().css("border","1px solid #ddd");
+								    	$("#errorphone").text("");	
+									    }
+							}else{
+								$("#errorphone").text("手机号不能为空");
+							}
+						
+							if(code==null ||code==""||code==undefined){
+								$("#errorcode").text("请输入手机验证码");
+								return;
+							}else if(code!=phoneMsgCode){
+								$("#errorcode").text("您输入的验证码错误，请重新输入！");
+								return;
+							}else{
+								$("#errorcode").text("");
+							}
+							if(setPwd!=setPwd){
+							
+								$("#errorpwd2").text("您两次输入的密码不一致")
+								return;
+							}else{
+								$("#errorpwd2").text("")
+							}
+							var param = {"password":pwd,"phone":mobile};
+							$.ajax({
+								url:"/vote/register",
+								type:"GET",
+								async:false,
+								data:param,
+								success:function(data){
+									console.log(data);
+									if(data.code == 1){
+									alert("恭喜您，注册成功请登录!")
+										$("#register").hide();
+										$("#login").show();
+										$("#loginMobile").val(mobile);
+						  				$("#loginPwd").val("");
+									}else{
+										alert("注册失败！\n失败原因为："+data.msg);
+									}				    				    				
+								},
+								error:function(data){
+									console.error(JSON.stringify(data));
+								}
+								
+							});
+						}
+						//登录验证
+						function login(){
+							 var loginMobile = $("#loginMobile").val();
+						  	 var loginPwd = $("#loginPwd").val();
+						  	 if ("" ==loginMobile || null==loginMobile || null==loginPwd ||""==loginPwd){
+						  	 	$("#errorphone2").text("请检查登录信息是否为空！");
+						  	 	return;
+						  	 }else{
+						  	 	$("#errorphone2").text("");
+						  	 }
+						  	 
+							 var param = {"phone":loginMobile,"password":loginPwd};											
+							$.ajax({
+								url:"/vote/login",
+								type:"GET",
+								async:false,
+								data:param,
+								//data:JSON.stringify(param),
+								success:function(data){
+									if (data.status== 1){
+										alert("恭喜用户"+data.user.phone+"登录成功!");
+										userId = data.user.id;
+										//window.open("/toupiaojiemian?userId="+userId,'_blank');
+										window.location.href ="/toupiaojiemian?userId="+userId;
+									}
+													    				    				
+								},
+								error:function(data){
+									console.error(JSON.stringify(data));
+								}
+								
+							});
+						}
+						$("#loginBtn").click(function(){
+							login();
+						})
+						
+					  
+			})
+		</script>
+	</body>
 </html>
