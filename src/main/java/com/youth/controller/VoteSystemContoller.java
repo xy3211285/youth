@@ -29,7 +29,7 @@ import com.youth.utils.JuheSmsAPI;
 import com.youth.utils.RandomCode;
 
 @RestController
-@RequestMapping(value = "/vote", produces="application/json;charset=UTF-8")
+@RequestMapping(value = "/vote")
 public class VoteSystemContoller {
     @Resource
     VoteSystemService voteSystemService;
@@ -42,7 +42,7 @@ public class VoteSystemContoller {
      * @return
      * @throws JSONException 
      */
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET,produces="application/json;charset=UTF-8")
     @ResponseBody
     public JSONObject login(HttpServletRequest request) throws JSONException {
     	JSONObject obj = new JSONObject();
@@ -91,7 +91,7 @@ public class VoteSystemContoller {
      * @param request
      * @return
      */
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    @RequestMapping(value = "/register", method = RequestMethod.GET,produces="application/text;charset=UTF-8")
     @ResponseBody
     public String register(HttpServletRequest request) {
     	
@@ -130,7 +130,7 @@ public class VoteSystemContoller {
      * @author Administrator
      * @throws JSONException
      */
-    @RequestMapping(value = "/getDepartmentVoteResult", method = RequestMethod.GET)
+    @RequestMapping(value = "/getDepartmentVoteResult", method = RequestMethod.GET,produces="application/json;charset=UTF-8")
     @ResponseBody
     public JSONObject getDepartmentVoteResult(HttpServletRequest request) throws JSONException {
     	JSONObject obj = new JSONObject();
@@ -150,7 +150,7 @@ public class VoteSystemContoller {
      * @author Administrator
      * @throws JSONException
      */
-    @RequestMapping(value = "/getBasicDepartmentVoteResult", method = RequestMethod.GET)
+    @RequestMapping(value = "/getBasicDepartmentVoteResult", method = RequestMethod.GET,produces="application/json;charset=UTF-8")
     @ResponseBody
     public JSONObject getBasicDepartmentVoteResult(HttpServletRequest request) throws JSONException {
     	JSONObject obj = new JSONObject();
@@ -170,7 +170,7 @@ public class VoteSystemContoller {
      * @author Administrator
      * @throws JSONException
      */
-    @RequestMapping(value = "/saveDepartmentVoteInfo", method = RequestMethod.POST)
+    @RequestMapping(value = "/saveDepartmentVoteInfo", method = RequestMethod.POST,produces="application/text;charset=UTF-8")
     @ResponseBody
     public String saveDepartmentVoteInfo(HttpServletRequest request,
     		@RequestParam(value="userId")String userId,
@@ -193,7 +193,7 @@ public class VoteSystemContoller {
      * @author Administrator
      * @throws JSONException
      */
-    @RequestMapping(value = "/saveBasicDepartmentVoteInfo", method = RequestMethod.POST)
+    @RequestMapping(value = "/saveBasicDepartmentVoteInfo", method = RequestMethod.POST,produces="application/text;charset=UTF-8")
     @ResponseBody
     public String saveBasicDepartmentVoteInfo(HttpServletRequest request,
     		@RequestParam(value="userId")String userId,
@@ -214,7 +214,7 @@ public class VoteSystemContoller {
      * @author Administrator
      * @throws JSONException
      */
-    @RequestMapping(value = "/getStaticsResult", method = RequestMethod.GET)
+    @RequestMapping(value = "/getStaticsResult", method = RequestMethod.GET,produces="application/json;charset=UTF-8")
     @ResponseBody
     public JSONObject getStaticsResult(HttpServletRequest request) throws JSONException {
     	String type = request.getParameter("type");
@@ -237,7 +237,7 @@ public class VoteSystemContoller {
      * @throws Exception 
      * @throws JSONException 
      */
-    @RequestMapping(value = "/getValidateCode", method = RequestMethod.GET)
+    @RequestMapping(value = "/getValidateCode", method = RequestMethod.GET,produces="application/json;charset=UTF-8")
     @ResponseBody
     public JSONObject getValidateCode(@RequestParam("phone")String phone) throws Exception{
     	JSONObject obj = new JSONObject();
