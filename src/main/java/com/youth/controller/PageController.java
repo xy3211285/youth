@@ -41,7 +41,7 @@ public class PageController {
     }
     
     @RequestMapping("/jieguochakan")
-    public String jieguochakan(@RequestParam(value = "userId",required=true) String userId,
+    public String jieguochakan(@RequestParam(value = "userId") String userId,
     		ModelMap modelMap) {
     	modelMap.addAttribute("userId", userId);
         return "jieguochakan";
