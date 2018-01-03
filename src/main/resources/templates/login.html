@@ -30,24 +30,24 @@
 			}
 			body,html{
 				height:100%;
-				width:100%;	
+				width:100%;
 			}
 			h1,h2,h3,h4,h5{
 				margin: 0;
 			}
-			
+
 			input[type=text],input[type=button]{
 				outline: none;
 			}
 			input:-ms-input-placeholder{
 			    color: #bbb;opacity:1;
 			}
-			
+
 			input::-webkit-input-placeholder{
 			    color: #bbb;opacity:1;
 			}
-			input:-webkit-autofill {  
-			    -webkit-box-shadow: 0 0 0px 1000px white inset !important;  
+			input:-webkit-autofill {
+			    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
 			}
 			.space{
 				height: 50px;
@@ -70,7 +70,7 @@
 			#login{
 				overflow: hidden;
 				width:100%;
-				height:410px;			
+				height:410px;
 			}
 			#register{
 				overflow: hidden;
@@ -90,7 +90,7 @@
 			#register-login h4 a{
 				color: #fff;
 				display: inline-block;
-				width: 49%;			
+				width: 49%;
 			}
 			form>div{
 				width:80%;
@@ -140,13 +140,13 @@
 	</head>
 	<body>
 		<div class="space">
-			
+
 		</div>
 		<div id="box">
 			<div id="register-login">
 			<h4>
-				<a href="#login">登录</a>			
-				<a href="#register">注册</a>	
+				<a href="#login">登录</a>
+				<a href="#register">注册</a>
 			</h4>
 		</div>
 		<div id="login-register">
@@ -193,42 +193,42 @@
 			</div>
 			</form>
 		</div>
-		</div>		
+		</div>
 		</div>
 		<script>
 			window.msg = function(tip){layer.msg(tip||"操作成功！", {time: 2000, icon:1});}
 		    //window.alert = function(tip){layer.msg(tip||'操作失败！', {time: 2000, icon:5});}
 		    var userId = "";
 			$(function(){
-				$('#mobile').blur(function() {	
+				$('#mobile').blur(function() {
 					 var mobile = $('#mobile').val();
-					 if(!(/^1[3|4|5|7|8][0-9]{9}$/.test(mobile))){  
+					 if(!(/^1[3|4|5|7|8][0-9]{9}$/.test(mobile))){
 					       $('#mobile').parent().css("border","1px solid red");
-					       $("#errorphone").text("请输入正确的手机号码");			       
+					       $("#errorphone").text("请输入正确的手机号码");
 					    } else{
 					    	$('#mobile').parent().css("border","1px solid #ddd");
 					    	$("#errorphone").text("");
 						}
 				 });
-				 
+
 				 $('#setPwd').blur(function() {
-					//密码验证6-16	
+					//密码验证6-16
 					 var reg = /(?!^[0-9]+$)(?!^[A-z]+$)(?!^[^A-z0-9]+$)^.{6,16}$/;
-					 if(!reg.test($(this).val())){ 
+					 if(!reg.test($(this).val())){
 					       $(this).parent().css("border","1px solid red");
 					       $("#errorpwd1").text("密码包含字母和数字,至少6位")
-					     
+
 					    }else {
 					    	 $(this).parent().css("border","1px solid #ddd");
 					    	 $("#errorpwd1").text("")
 						}
 				 });
-				 
+
 				 //密码一致验证
 				 $('#pwd').blur(function() {
 				 if($(this).val()!=$('#setPwd').val()||$(this).val()==''){
 				       $(this).parent().css("border","1px solid red");
-				        $("#errorpwd2").text("您两次输入密码不一致！"); 
+				        $("#errorpwd2").text("您两次输入密码不一致！");
 				    }else {
 				    	 $(this).parent().css("border","1px solid #ddd");
 				    	 $("#errorpwd2").text("");
@@ -238,23 +238,23 @@
 				    $('#VerificationCode').click(function() {
 						//手机号验证
 						var mobile = $('#mobile').val();
-						 if(!(/^1[3|4|5|7|8][0-9]{9}$/.test(mobile))){ 
-						       $("#errorphone").text("请输入正确的手机号码"); 
-						       $('#mobile').focus(); 
+						 if(!(/^1[3|4|5|7|8][0-9]{9}$/.test(mobile))){
+						       $("#errorphone").text("请输入正确的手机号码");
+						       $('#mobile').focus();
 						       $('#mobile').parent().css("border","1px solid red");
-						       return false; 
+						       return false;
 						    } else{
 						    	$('#mobile').parent().css("border","1px solid #ddd");
-						    	$("#errorphone").text("");	
+						    	$("#errorphone").text("");
 						    }
 						var param = {"phone":mobile};
 						  	getRegisterCode($(this),param);
-						  
+
 					});
-					
+
 					  //注册
 					  $('#registerBtn').click(function() {
-					  	register();			  
+					  	register();
 					  });
 					  //注册通过接口获取验证码
 					  	var phoneMsgCode="";
@@ -271,15 +271,15 @@
 									if(data.result.code==200){
 										phoneMsgCode=data.validateCode;
 										//到计时
-										time(o);	
+										time(o);
 									}else{
 										alert(data.result.msg);
-									}    					    				    				
+									}
 								},
 								error:function(data){
 									console.error(JSON.stringify(data));
 								}
-								
+
 							});
 						};
 						//倒计时
@@ -306,18 +306,18 @@
 							var pwd =  $('#pwd').val();
 							var mobile = $("#mobile").val();
 							if(mobile){
-								if(!(/^1[3|4|5|7|8][0-9]{9}$/.test(mobile))){  
+								if(!(/^1[3|4|5|7|8][0-9]{9}$/.test(mobile))){
 								       $('#mobile').parent().css("border","1px solid red");
 								       $("#errorphone").text("请输入正确的手机号码");
 								       return false;
 								    } else{
 								    	$('#mobile').parent().css("border","1px solid #ddd");
-								    	$("#errorphone").text("");	
+								    	$("#errorphone").text("");
 									    }
 							}else{
 								$("#errorphone").text("手机号不能为空");
 							}
-						
+
 							if(code==null ||code==""||code==undefined){
 								$("#errorcode").text("请输入手机验证码");
 								return;
@@ -328,7 +328,7 @@
 								$("#errorcode").text("");
 							}
 							if(setPwd!=setPwd){
-							
+
 								$("#errorpwd2").text("您两次输入的密码不一致")
 								return;
 							}else{
@@ -350,12 +350,12 @@
 						  				$("#loginPwd").val("");
 									}else{
 										alert("注册失败！\n失败原因为："+data.msg);
-									}				    				    				
+									}
 								},
 								error:function(data){
 									console.error(JSON.stringify(data));
 								}
-								
+
 							});
 						}
 						//登录验证
@@ -368,8 +368,8 @@
 						  	 }else{
 						  	 	$("#errorphone2").text("");
 						  	 }
-						  	 
-							 var param = {"phone":loginMobile,"password":loginPwd};											
+
+							 var param = {"phone":loginMobile,"password":loginPwd};
 							$.ajax({
 								url:"/vote/login",
 								type:"GET",
@@ -383,19 +383,19 @@
 										//window.open("/toupiaojiemian?userId="+userId,'_blank');
 										window.location.href ="/toupiaojiemian?userId="+userId;
 									}
-													    				    				
+
 								},
 								error:function(data){
 									console.error(JSON.stringify(data));
 								}
-								
+
 							});
 						}
 						$("#loginBtn").click(function(){
 							login();
 						})
-						
-					  
+
+
 			})
 		</script>
 	</body>

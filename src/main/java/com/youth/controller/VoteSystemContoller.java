@@ -1,17 +1,20 @@
 package com.youth.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -180,17 +183,29 @@ public class VoteSystemContoller {
      * @author Administrator
      * @throws JSONException
      */
-    @RequestMapping(value = "/saveDepartmentVoteInfo", method = RequestMethod.POST,produces="application/text;charset=UTF-8")
+    @RequestMapping(value = "/saveDepartmentVoteInfo", method = RequestMethod.POST)
     @ResponseBody
     public String saveDepartmentVoteInfo(HttpServletRequest request,
     		@RequestParam(value="userId")String userId,
-    		@RequestBody List<Departments> departList) throws JSONException {
-    	//String departs = request.getParameter("departList");
-    	//List<BasicDepartment> departList = JSONArray.parseArray(departs,BasicDepartment.class);
-    	for (Departments department : departList) {
-    		department.setId(GernatedId.getIdStr());
-    		department.setUserId(userId);
-		}
+    		@RequestParam(value="param")String param) throws JSONException {
+    	//	String departs = request.getParameter("departList");
+    	List<Departments> departList = new ArrayList<Departments>();
+    	Departments departments = null;
+    	
+    	JSONObject object = JSONObject.fromObject(param);
+    	JSONArray dataJson = object.getJSONArray("data");
+    	for (int i = 0; i < dataJson.size(); i++) {
+    		departments = new Departments();
+    		JSONObject dJsonObject = JSONObject.fromObject(dataJson.get(i));
+    		departments.setDepartName(dJsonObject.getString("departName"));
+    		departments.setVoteResult(ObjectUtils.isEmpty(dJsonObject.get("voteResult"))?"":dJsonObject.getString("voteResult"));
+    		departments.setId(GernatedId.getIdStr());
+    		departments.setUserId(userId);
+    		departments.setRemark(null);
+    		departList.add(departments);
+    	}
+    		
+    	
         int  status = voteSystemService.saveDepartmentVoteInfo(departList);
         if (status > 0){
         	return "success";
@@ -203,15 +218,23 @@ public class VoteSystemContoller {
      * @author Administrator
      * @throws JSONException
      */
-    @RequestMapping(value = "/saveBasicDepartmentVoteInfo", method = RequestMethod.POST,produces="application/text;charset=UTF-8")
+    @RequestMapping(value = "/saveBasicDepartmentVoteInfo", method = RequestMethod.POST)
     @ResponseBody
     public String saveBasicDepartmentVoteInfo(HttpServletRequest request,
     		@RequestParam(value="userId")String userId,
-    		@RequestBody List<BasicDepartment> departList) throws JSONException {
-    	for (BasicDepartment basicDepartment : departList) {
+    		@RequestParam(value="param")String param) throws JSONException {
+    	List<BasicDepartment> departList = new ArrayList<BasicDepartment>();
+    	JSONObject object = JSONObject.fromObject(param);
+    	JSONArray dataJson = object.getJSONArray("data");
+    	for (Object jsonObject : dataJson) {
+    		BasicDepartment basicDepartment = new BasicDepartment();
+    		JSONObject dJsonObject = JSONObject.fromObject(jsonObject);
     		basicDepartment.setId(GernatedId.getIdStr());
     		basicDepartment.setUserId(userId);
-		}
+    		basicDepartment.setDepartname(dJsonObject.getString("departName"));
+    		basicDepartment.setVoteResult(ObjectUtils.isEmpty(dJsonObject.get("voteResult"))?"":dJsonObject.getString("voteResult"));
+    		departList.add(basicDepartment);
+    	}
     	int status = voteSystemService.saveBasicDepartmentVoteInfo(departList);
     	if (status > 0){
         	return "success";

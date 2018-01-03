@@ -1,7 +1,23 @@
 $(function () {
-    initDepartment("1");
-    initBaasicDepart("1");
+    var userId = $("#userIdInput").val();
+    initResultTable();
+    initDepartment(userId);
+    initBaasicDepart(userId);
 })
+
+function initResultTable() {
+    $.get("/vote/getStaticsResult?type=1", function(data) {
+        var tr = "";
+        var list = data.data;
+        for (var i = 0; i < list.length; i++) {
+            var index = i + 1;
+            tr += "<tr><td>" + index + "</td>";
+            tr += "<td>" + list[i].depart + "</td>";
+            tr += "<td>" + list[i].rank + "</td></tr>";
+        }
+        $("#resultTable").append(tr);
+    });
+}
 
 function initDepartment(userId) {
     $.get("/vote/getDepartmentVoteResult?userId=" + userId, function(data) {
@@ -11,10 +27,9 @@ function initDepartment(userId) {
             var index = i + 1;
             tr += "<tr><td>" + index + "</td>";
             tr += "<td>" + list[i].departName + "</td>"
-            tr += "<td><input type='radio' name='radio_" + i + "' "+ isChecked(list[i].voteResult, "5") + "/></td>"
-            tr += "<td><input type='radio' name='radio_" + i + "' "+ isChecked(list[i].voteResult, "3") + "/></td>"
-            tr += "<td><input type='radio' name='radio_" + i + "' "+ isChecked(list[i].voteResult, "1") + "/></td>"
-            tr += "<td><input type='radio' name='radio_" + i + "' "+ isChecked(list[i].voteResult, "0") + "/></td></tr>"
+            tr += "<td><input type='checkbox' class='checkItem' onclick='return false' " + isChecked(list[i].voteResult, "1") + "/></td>"
+            tr += "<td><input type='checkbox' class='checkItem' onclick='return false' " + isChecked(list[i].voteResult, "2") + "/></td>"
+            tr += "<td><input type='checkbox' class='checkItem' onclick='return false' " + isChecked(list[i].voteResult, "3") + "'/></td></tr>"
         }
         $("#department").append(tr);
     });
@@ -27,17 +42,16 @@ function initBaasicDepart(userId) {
             var index = i + 1;
             tr += "<tr><td>" + index + "</td>";
             tr += "<td>" + list[i].departname + "</td>"
-            tr += "<td><input type='radio' name='baseRadio_" + i + "' "+ isChecked(list[i].voteResult, "5") + "/></td>"
-            tr += "<td><input type='radio' name='baseRadio_" + i + "' "+ isChecked(list[i].voteResult, "3") + "/></td>"
-            tr += "<td><input type='radio' name='baseRadio_" + i + "' "+ isChecked(list[i].voteResult, "1") + "/></td>"
-            tr += "<td><input type='radio' name='baseRadio_" + i + "' "+ isChecked(list[i].voteResult, "0") + "/></td></tr>"
+            tr += "<td><input type='checkbox' class='checkItem' onclick='return false' " + isChecked(list[i].voteResult, "1") + "/></td>"
+            tr += "<td><input type='checkbox' class='checkItem' onclick='return false' " + isChecked(list[i].voteResult, "2") + "/></td>"
+            tr += "<td><input type='checkbox' class='checkItem' onclick='return false' " + isChecked(list[i].voteResult, "3") + "'/></td></tr>"
         }
         $("#baseDepart").append(tr);
     })
 }
 function isChecked(score, trScore) {
     if (score && score == trScore) {
-        return "checked";
+        return "checked='checked'";
     }
     return "";
 }

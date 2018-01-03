@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<meta charset="UTF-8"></meta>
+		<meta charset="UTF-8"/>
 		<title>投票界面</title>
 	</head>
-	<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<link href="https://cdn.bootcss.com/layer/3.1.0/theme/default/layer.css" rel="stylesheet"/>
+	<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+	<script type="text/javascript" src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+	<script type="text/javascript" src="/js/toupiaojiemian.js"></script>
 	<style type="text/css">
+		body{
+			
+		}
 		*{
 			margin: 0;
 			padding: 0;
@@ -29,10 +35,12 @@
 		.tables{
 			width: 80%;
 			margin: 0 auto;
+			background:url("../img/toupiaojiemian.jpg");
 		}
 		.tab1{
 			width: 100%;
 			padding: 20px;
+			background:#fff;
 		}
 		.tab1>table{
 			margin-top:0;
@@ -64,8 +72,21 @@
 			height: 40px;
 			line-height: 60px;
 		}
+		#submitVoteDepart,#submitVoteBase{
+			width: 120px;
+		    height: 40px;
+		    background: #e66666;
+		    border: 1px solid #e66666;
+		    color: #fff;
+		    margin: 20px auto;
+		    display: block;
+		    outline:none;
+		    
+		}
 	</style>
+	
 	<body>
+	<input id="userId" th:value="${userId}" style="display:none;"></input>
 		<div class="details">
 			<h4>评价内容</h4>
 			<div>（一）严格依法行政方面。是否认真贯彻落实中央，省委省政府和市委市政府重大决策部署；是否按照法定职责和简政放权要求
@@ -84,9 +105,11 @@
 			（五）收集和解决问题方面。是否畅通群众利益诉求渠道；是否及时解答群众政策咨询，认真解决群众举报投诉；公开承诺事项是
 			否兑现到位；是否切实解决本部门存在的突出问题，问题整改效果是否让服务对象、社会各界满意等；是否健全完善履职尽责的长
 			效机制。<br /></div>
-			<h4>评议说明</h4>
-			<div>对以下部门和单位的评议共分满意、基本满意、不满意、不了解四个选项。请您根据平时掌握和了解的情况，针对上述评议内容，
-			对参评部门和单位作出公正的综合评价，在相应选项栏打“√”。</div>
+			<h4>活动说明</h4>
+			<div>根据《区委办公室、区政府办公室关于转发&lt;区纠风办关于2017年度加强履职尽责督促检查工作的实施方案&gt;的通知》
+			（新办文〔2017〕28号）安排部署，区纠风办创新“互联网+评议”模式，组织广大群众和社会各界对被督查部门单位履职尽责情况进行网上评议。
+			2017年度全区加强履职尽责督促检查对象共 45家，其中，经济和社会事业发展类23家，城市管理和执法监督类16家，公共服务企业类6家。
+			按照“满意”、“基本满意”、“不满意”和“不了解”四个选项，分别对45家单位进行评议。</div>
 		</div>
 		<div class="description">
 			以下45个部门，必须全部完成评议;28单位共297个站所，从中任选20个及以上完成评议即可
@@ -97,6 +120,7 @@
 		<div class="tables">
 			<div class="tab1">
 				<table cellspacing="0" cellpadding="">
+					<thead>
 						<tr>
 							<th>序号</th>
 							<th>部门和单位名称</th>
@@ -105,24 +129,22 @@
 							<th>不满意</th>
 							<th>不了解</th>
 						</tr>
-						<tr>
-							<td>1</td>
-							<td></td>
-							<td><input type="checkbox"/></td>
-							<td><input type="checkbox"/></td>
-							<td><input type="checkbox"/></td>
-							<td><input type="checkbox"/></td>
-						</tr>
-					</table>
+					</thead>
+					<tbody id="departTable">
+					</tbody>
+						
+				</table>
 			</div>
 			
 		</div>
+		<button id="submitVoteDepart">投票</button>
 		<div class="title">
 			基层站所297个
 		</div>
 		<div class="tables">
 			<div class="tab1">
 				<table cellspacing="0" cellpadding="">
+					<thead>
 						<tr>
 							<th>序号</th>
 							<th>基层站所</th>
@@ -131,16 +153,13 @@
 							<th>不满意</th>
 							<th>不了解</th>
 						</tr>
-						<tr>
-							<td>1</td>
-							<td></td>
-							<td><input type="checkbox"/></td>
-							<td><input type="checkbox"/></td>
-							<td><input type="checkbox"/></td>
-							<td><input type="checkbox"/></td>
-						</tr>
+					</thead>
+					<tbody id="baseDepartTable">
+					</tbody>
 					</table>
 			</div>
 		</div>
+		<button id="submitVoteBase">投票</button>
 	</body>
 </html>
+

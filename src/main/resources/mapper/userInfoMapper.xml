@@ -22,10 +22,10 @@
         replace into departments 
         (id,departname,voteresult,userId)
         	values
-         <foreach collection="list" item="item" index="index" separator=",">
+         <foreach collection="departsList" item="item" index="index" separator=",">
             (#{item.id,jdbcType=VARCHAR}, 
-            #{item.departname,jdbcType=VARCHAR},
-            #{item.voteresult,jdbcType=VARCHAR},
+            #{item.departName,jdbcType=VARCHAR},
+            #{item.voteResult,jdbcType=VARCHAR},
             #{item.userId,jdbcType=VARCHAR})
         </foreach>
     </insert>
@@ -34,11 +34,11 @@
         replace into basic_department 
         (id,departs,departname,voteresult,userId)
         	values
-         <foreach collection="list" item="item" index="index" separator=",">
+         <foreach collection="basicList" item="item" index="index" separator=",">
             (#{item.id,jdbcType=VARCHAR}, 
             #{item.departs,jdbcType=VARCHAR},
             #{item.departname,jdbcType=VARCHAR},
-            #{item.voteresult,jdbcType=VARCHAR},
+            #{item.voteResult,jdbcType=VARCHAR},
             #{item.userId,jdbcType=VARCHAR})
         </foreach>
     </insert>
