@@ -6,5 +6,7 @@
 .idea
 *.iml
 out
+.project
+.classpath
 gen
 /target/
